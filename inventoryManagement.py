@@ -45,35 +45,36 @@ def menu():
     os.system("clear")
     print("Inventory Manager")
     print("( View | Add | Remove | Exit )")
-    x = raw_input("")
+    x = input("")
     print()
     if x == "view" or x == "View":
         if len(storage.items) != 0:
             for i in storage.items:
-                print "$%i %s" % (i.value, i.name)
+                word = "${0}, {1}".format(i.value, i.name)
+                print(word)
             print("Total Value: $%i" % storage.value)
         else:
             print("Nothing to show!")
-            raw_input("Press enter to continue")
-        raw_input("Press enter to continue")
+            input("Press enter to continue")
+        input("Press enter to continue")
     elif x == "Exit" or x == "exit":
         quit()
     elif x == "Add" or x == "add":
-        name = raw_input("Name: ")
-        value = raw_input("Price: ")
+        name = input("Name: ")
+        value = input("Price: ")
         item = Product()
         item.setValue(int(value))
         item.setName(name)
         storage.addItem(item)
         print("Item added!")
-        raw_input("Press enter to continue")
+        input("Press enter to continue")
     elif x == "Remove" or x == "remove":
-        name = raw_input("Name: ")
+        name = input("Name: ")
         storage.removeItem(name)
         print("Item removed!")
-        raw_input("Press enter to continue")
+        input("Press enter to continue")
     else:
         print("Unknown command!")
-        raw_input("Press enter to continue")
+        input("Press enter to continue")
     menu()
 menu()
